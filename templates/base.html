@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pyGSFLOW</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        {% block content %}
+        <div class="wrapper">
+            <div class="nav">
+                <nav>
+                    <div class="logo"> <p>Py <span
+                                id="logo-color">GSFLOW</span></p></div>
+
+                    <div class="navlinks">
+                        <ul>
+                            <li>About</li>
+                            <li>Home</li>
+                            <button> <a href="{% url 'form-upload' %}"> upload
+                                    DEM</a></button>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="dem">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure magnam ea quibusdam laudantium? Magni necessitatibus quia possimus mollitia quidem eum est saepe illo esse, aperiam perspiciatis animi aut eaque. Culpa.</p>
+               <div class="graph">
+                {% if not data %}
+                 <p> Your Plot will appear here, upload a DEM</p>
+                 {% else %}
+                <img src="data:image/png;base64,{{data}}" alt="" srcset=""
+                height={{height}} width={{width}}>
+                {% endif %}
+               </div>
+
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+</html>
